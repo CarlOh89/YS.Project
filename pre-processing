@@ -1,0 +1,169 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Apr  8 12:26:45 2024
+
+@author: OSP
+"""
+
+"""
+<td class="content" colspan="6">
+"""
+
+#%%
+import requests
+
+dfs = []
+url = "https://www.pa.go.kr/research/contents/speech/index."
+speech = "jsp?spMode=view&catid=c_pa02062&artid="
+number = "1330298"
+
+html = url+speech+number
+
+r = requests.get(html)
+soup = BeautifulSoup(r.text, "html.parser")
+president_text = soup.find("td", class_="content")
+
+print(president_text)          
+
+#%%
+
+### 데이터 전처리
+
+#%%
+
+#  업로드 : csv파일 -> 데이터프레임
+import pandas as pd
+speech = pd.read_excel('C:/Users/OSP/Desktop/raw data/A.xlsx')
+speech2 = pd.DataFrame(speech)
+speech2.head()
+
+# 컬럼확인
+print(speech2.columns)
+
+help()
+
+#%%
+
+#  글자수 세기
+
+from collections import Counter
+
+# 텍스트를 공백을 기준으로 단어로 분할하여 리스트로 변환
+speech2['split_연설문'] = df['연설문'].str.split()
+
+speech3 = speech2.drop('연설문', axis=1)
+speech3.head()
+
+speech4 = speech3.iloc[1:2]
+
+row_list = speech4.iloc[0].tolist()
+
+# Counter 객체 생성
+word_counts = Counter()
+
+# 리스트 내부의 값들을 반복하며 단어 빈도 계산
+for row in row_list:
+    words = row.split()
+    word_counts.update(words)
+
+# 결과 출력
+print("단어 빈도:")
+print(word_counts)
+#%%
+
+list = speech4.iloc[0].tolist()
+
+word_counts = Counter()
+for index, row in list:
+    words = row['list'].split()
+    word_counts.update(words)
+
+# 결과 출력
+print("단어 빈도:")
+print(word_counts)
+
+
+#%%
+
+from collections import Counter
+
+# speech4.iloc[0].tolist()로 얻은 리스트
+row_list = speech4.iloc[0].tolist()
+
+# Counter 객체 생성
+word_counts = Counter()
+
+# 리스트 내부의 값들을 반복하며 단어 빈도 계산
+for row in row_list:
+    words = row.split()
+    word_counts.update(words)
+
+# 결과 출력
+print("단어 빈도:")
+print(word_counts)
+#%%
+from collections import Counter
+
+# 예시 데이터프레임 생성
+# speech4라는 데이터프레임을 생성하는 부분이 생략되어 있으므로, speech4가 어떤 형태인지에 따라 코드를 수정해야 합니다.
+
+# Counter 객체 생성
+word_counts = Counter()
+
+
+speech4 = list(speech4)
+# 데이터프레임 행을 반복하며 단어 빈도를 계산
+for index, row in speech4.iterrows():
+    words = row['speech4'].split()
+    word_counts.update(words)
+
+# 결과 출력
+print("단어 빈도:")
+print(word_counts)
+
+#%%
+
+word_counts = Counter()
+for text in speech3[0:2]:
+    words = text.split()
+    word_counts.update(words)
+
+# 결과 출력
+print("단어 빈도:")
+print(word_counts)
+
+#%%
+word_counts = Counter(speech3,)
+
+# 단어 빈도 출력
+print(word_counts)
+
+
+counts = {}
+
+combined_string = ' '.join(input_list)
+
+for speech3 in speech3:
+    counts[speech3] = counts.get(speech3, 0) + 1
+    
+return counts
+#%%
+
+print(split_연설문)
+# 단어의 빈도를 계산하여 Counter 객체 생성
+word_counts = Counter(split_연서f문)
+
+# 단어 빈도 출력
+print(word_counts)
+
+
+#%%
+
+
+# 컬럼 지정
+
+data = speech.loc[:, selected_columns]
+data.head()
+
+#%%
+
